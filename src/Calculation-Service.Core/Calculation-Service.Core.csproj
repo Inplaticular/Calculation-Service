@@ -8,4 +8,8 @@
         <AssemblyName>Inplanticular.Calculation-Service.Core</AssemblyName>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="Contracts\V1" />
+    </ItemGroup>
+
 </Project>
