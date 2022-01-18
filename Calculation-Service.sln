@@ -4,9 +4,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5F0D8474-8F3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5D21F9DC-88C9-4452-B6C2-570AE98BFA21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculation-Service.Core", "src\Calculation-Service.Core\Calculation-Service.Core.csproj", "{D1D96784-0713-43B7-92EB-2FF16F9D8090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculation-Service.Infrastructure", "src\Calculation-Service.Infrastructure\Calculation-Service.Infrastructure.csproj", "{5062058C-2FCD-4D73-9563-EE42A31ECA24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculation-Service.WebAPI", "src\Calculation-Service.WebAPI\Calculation-Service.WebAPI.csproj", "{F0FF843B-DC1A-4CE1-A7DD-E759A6A8CB60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D1D96784-0713-43B7-92EB-2FF16F9D8090} = {5F0D8474-8F32-4DBF-B462-1672DEC868D1}
+		{5062058C-2FCD-4D73-9563-EE42A31ECA24} = {5F0D8474-8F32-4DBF-B462-1672DEC868D1}
+		{F0FF843B-DC1A-4CE1-A7DD-E759A6A8CB60} = {5F0D8474-8F32-4DBF-B462-1672DEC868D1}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1D96784-0713-43B7-92EB-2FF16F9D8090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D96784-0713-43B7-92EB-2FF16F9D8090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D96784-0713-43B7-92EB-2FF16F9D8090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D96784-0713-43B7-92EB-2FF16F9D8090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5062058C-2FCD-4D73-9563-EE42A31ECA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5062058C-2FCD-4D73-9563-EE42A31ECA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5062058C-2FCD-4D73-9563-EE42A31ECA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5062058C-2FCD-4D73-9563-EE42A31ECA24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0FF843B-DC1A-4CE1-A7DD-E759A6A8CB60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0FF843B-DC1A-4CE1-A7DD-E759A6A8CB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0FF843B-DC1A-4CE1-A7DD-E759A6A8CB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0FF843B-DC1A-4CE1-A7DD-E759A6A8CB60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
