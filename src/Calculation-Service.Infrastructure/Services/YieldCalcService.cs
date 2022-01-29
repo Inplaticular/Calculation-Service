@@ -5,6 +5,7 @@ using Inplanticular.CalculationService.Core.Services;
 namespace Inplanticular.CalculationService.Infrastructure.Services;
 
 public class YieldCalcService : IYieldCalcService {
+	
 	public async Task<YieldCalcResponse> CalcRequestAsync(YieldCalcRequest request) {
 		var yieldEst = 0.0;
 
