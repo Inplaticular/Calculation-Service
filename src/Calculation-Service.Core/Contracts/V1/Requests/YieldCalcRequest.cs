@@ -9,6 +9,6 @@ public record YieldCalcRequest {
 	[Range(0, double.MaxValue, ErrorMessage = "Value should be greater than or equal to 0")]
 	public double ActFruitCount { get; set; }
 
-	[Required] public bool IsWatered { get; set; }
-	[Required] public double FertBuff { get; set; }
+	[Required] [Range(0, int.MaxValue)] public int DaysWithoutWater { get; set; }
+	[Required] public double FertilizerPercentage { get; set; }
 }

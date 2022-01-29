@@ -11,8 +11,8 @@ public class GrowthCalcService : IGrowthCalcService {
 		GrowthCalcResponse growthCalcResponse;
 		try {
 			var ripeTimePercentageToday = GrowthCalculation.CalculateRipePercentageToday(
-				request.RipePercentageYesterday, request.GrowthPerDay, request.FertToday, request.NoWater,
-				request.NoWaterInRow);
+				request.RipePercentageYesterday, request.GrowthPerDay, request.FertilizerPercentageToday,
+				request.DaysWithoutWater);
 			var ripeTime = GrowthCalculation.CalculateRipeTime(request.TimeFromPlanting, ripeTimePercentageToday);
 			growthCalcResponse = new GrowthCalcResponse {
 				Succeeded = true,
@@ -23,7 +23,6 @@ public class GrowthCalcService : IGrowthCalcService {
 		catch (PlantDeadException e) {
 			growthCalcResponse = new GrowthCalcResponse {
 				Succeeded = false,
-				RipeTime = -1,
 				Errors = new[] {GrowthCalcResponse.Error.PlantDiedError}
 			};
 		}

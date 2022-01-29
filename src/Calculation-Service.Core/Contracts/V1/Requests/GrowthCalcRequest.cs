@@ -12,7 +12,6 @@ public record GrowthCalcRequest {
 	[Range(0, double.MaxValue, ErrorMessage = "Value should be greater than or equal to 0")]
 	public double GrowthPerDay { get; set; }
 
-	[Required] public double FertToday { get; set; }
-	[Required] public bool NoWater { get; set; }
-	[Required] public int NoWaterInRow { get; set; }
+	[Required] public double FertilizerPercentageToday { get; set; }
+	[Required] [Range(0, int.MaxValue)] public int DaysWithoutWater { get; set; }
 }

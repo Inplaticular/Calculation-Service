@@ -6,12 +6,12 @@ namespace YieldCalculationService.Infrastructure.Test;
 
 public class YieldCalculationTests {
 	[Fact]
-	public void CalcRequestAsync_ShouldReturnResponse_WhenWatered() {
+	public void CalcRequestAsync_ShouldReturnResponseWithExpectedYield_WhenWatered() {
 		var yieldCalcRequest = new YieldCalcRequest {
-			FertBuff = 1.0,
+			FertilizerPercentage = 0,
 			ActFruitCount = 12.0,
 			AvgFruitWeight = 23.0,
-			IsWatered = true
+			DaysWithoutWater = 0
 		};
 		var yieldCalcService = new YieldCalcService();
 		var yieldCalcResponse = yieldCalcService.CalcRequestAsync(yieldCalcRequest).Result;
@@ -19,15 +19,28 @@ public class YieldCalculationTests {
 	}
 
 	[Fact]
-	public void CalcRequestAsync_ShouldReturnResponse_WhenWatered2() {
+	public void CalcRequestAsync_ShouldReturnResponse_WhenNotWateredButNotDead() {
 		var yieldCalcRequest = new YieldCalcRequest {
-			FertBuff = 1,
+			FertilizerPercentage = 0,
 			ActFruitCount = 12.0,
 			AvgFruitWeight = 23.0,
-			IsWatered = true
+			DaysWithoutWater = 3
 		};
 		var yieldCalcService = new YieldCalcService();
 		var yieldCalcResponse = yieldCalcService.CalcRequestAsync(yieldCalcRequest).Result;
-		Assert.Equal(331.2, yieldCalcResponse.Yield);
+		Assert.Equal(276, yieldCalcResponse.Yield);
+	}
+
+	[Fact]
+	public void CalcRequestAsync_ShouldntReturnResponseWithNegativeYield_WhenNotWatered7Days() {
+		var yieldCalcRequest = new YieldCalcRequest {
+			FertilizerPercentage = 0,
+			ActFruitCount = 12.0,
+			AvgFruitWeight = 23.0,
+			DaysWithoutWater = 7
+		};
+		var yieldCalcService = new YieldCalcService();
+		var yieldCalcResponse = yieldCalcService.CalcRequestAsync(yieldCalcRequest).Result;
+		Assert.NotEmpty(yieldCalcResponse.Errors);
 	}
 }

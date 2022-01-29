@@ -6,11 +6,11 @@ namespace YieldCalculationService.Infrastructure.Test;
 
 public class GrowthCalculationTests {
 	[Fact]
-	public void CalculateRipePercentageToday_ShouldReturnDeadPlant_WhenNoWaterAndSixDaysNoWaterInRow() {
+	public void CalculateRipePercentageToday_ShouldReturnDeadPlant_WhenNoWaterAnd7DaysNoWaterInRow() {
 		// Arrange
 
 		// Act + Assert
-		Assert.Throws<PlantDeadException>(() => GrowthCalculation.CalculateRipePercentageToday(0, 0, 0, true, 6));
+		Assert.Throws<PlantDeadException>(() => GrowthCalculation.CalculateRipePercentageToday(0, 0, 0, 7));
 	}
 
 	[Fact]
@@ -18,30 +18,30 @@ public class GrowthCalculationTests {
 		// Arrange
 
 		// Act + Assert
-		var ripePercentateToday = GrowthCalculation.CalculateRipePercentageToday(0, 1.5, 0, false, 0);
-		Assert.Equal(1.5, ripePercentateToday);
+		var ripePercentageToday = GrowthCalculation.CalculateRipePercentageToday(0, 1.5, 0, 0);
+		Assert.Equal(1.5, ripePercentageToday);
 	}
 
 	[Fact]
 	public void CalculateRipePercentageToday_ShouldReturnNumber_WhenPlantedYesterdayAndGivenWaterAndFertilizer() {
-		var ripePercentateToday = GrowthCalculation.CalculateRipePercentageToday(0, 1.5, 1.5, false, 0);
-		Assert.Equal(3, ripePercentateToday);
+		var ripePercentageToday = GrowthCalculation.CalculateRipePercentageToday(0, 1.5, 0.5, 0);
+		Assert.Equal(2, ripePercentageToday);
 	}
 
 	[Fact]
 	public void CalculateRipeTime_ShouldReturnDays_WhenPlantedYesterdayAndGivenWaterAndFertilizer() {
 		// Arrange
-		var ripePercentateToday = GrowthCalculation.CalculateRipePercentageToday(0, 1.5, 1.5, false, 0);
+		var ripePercentageToday = GrowthCalculation.CalculateRipePercentageToday(10, 1.5, 0.5, 0);
 		// Act
-		var ripeTime = GrowthCalculation.CalculateRipeTime(1, ripePercentateToday);
+		var ripeTime = GrowthCalculation.CalculateRipeTime(1, ripePercentageToday);
 		// Assert
-		Assert.Equal(33, ripeTime);
+		Assert.Equal(8, ripeTime);
 	}
 
 	[Fact]
 	public void CalculateRipeTime_ShouldReturnDays_WhenPlanted16DaysAgoAndNotGivenWaterIn3DaysAndFertilizer() {
 		// Arrange
-		var ripePercentateToday = GrowthCalculation.CalculateRipePercentageToday(55, 1.5, 1.5, true, 3);
+		var ripePercentateToday = GrowthCalculation.CalculateRipePercentageToday(55, 1.5, 0.5, 3);
 		// Act
 		var ripeTime = GrowthCalculation.CalculateRipeTime(16, ripePercentateToday);
 		// Assert
