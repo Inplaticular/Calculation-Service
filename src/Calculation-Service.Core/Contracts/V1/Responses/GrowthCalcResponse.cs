@@ -1,15 +1,23 @@
-﻿namespace Inplanticular.CalculationService.Core.Contracts.V1.Responses;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record GrowthCalcResponse(bool Success, int RipeTime, IEnumerable<string> Messages, IEnumerable<string> Errors)
-{
-    public static class Message
-    {
-        public const string GrowthCalculationSuccessfull = "The ripeTime was calculated successfully";
-    }
+namespace Inplanticular.CalculationService.Core.Contracts.V1.Responses;
 
-    public static class Error
-    {
-        public const string PlantDiedError =
-            "The ripeTime wasnt calculated successfully. The plant died due to a lack of water.";
-    }
+public class GrowthCalcResponse : BaseResponse {
+	[Required] public int RipeTime { get; set; }
+
+	public static class Message {
+		public static readonly ValueObjects.Message
+			GrowthCalculationSuccessfull = new() {
+				Code = nameof(GrowthCalculationSuccessfull),
+				Description = "The ripeTime was calculated successfully."
+			};
+	}
+
+	public static class Error {
+		public static readonly ValueObjects.Message
+			PlantDiedError = new() {
+				Code = nameof(PlantDiedError),
+				Description = "The ripeTime wasnt calculated successfully. The plant died due to a lack of water."
+			};
+	}
 }

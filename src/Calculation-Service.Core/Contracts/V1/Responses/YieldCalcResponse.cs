@@ -1,14 +1,23 @@
-﻿namespace Inplanticular.CalculationService.Core.Contracts.V1.Responses;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record YieldCalcResponse(bool Success, double Yield, IEnumerable<string> Messages, IEnumerable<string> Errors)
-{
-    public static class Message
-    {
-        public const string YieldCalculationSuccessfull = "The yield was estimated successfully";
-    }
+namespace Inplanticular.CalculationService.Core.Contracts.V1.Responses;
 
-    public static class Error
-    {
-        public const string PlantDiedError = "The yield wasnt estimated successfully.";
-    }
+public class YieldCalcResponse : BaseResponse {
+	[Required] public double Yield { get; set; }
+
+	public static class Message {
+		public static readonly ValueObjects.Message
+			YieldCalculationSuccessfull = new() {
+				Code = nameof(YieldCalculationSuccessfull),
+				Description = "The yield was estimated successfully."
+			};
+	}
+
+	public static class Error {
+		public static readonly ValueObjects.Message
+			PlantDiedError = new() {
+				Code = nameof(PlantDiedError),
+				Description = "The yield wasnt estimated successfully."
+			};
+	}
 }

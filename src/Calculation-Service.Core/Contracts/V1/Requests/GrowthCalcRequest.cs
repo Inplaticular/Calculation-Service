@@ -1,4 +1,18 @@
-﻿namespace Inplanticular.CalculationService.Core.Contracts.V1.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record GrowthCalcRequest(int TimeFromPlanting, int RipePercentageYesterday, double GrowthPerDay,
-    double FertToday, bool NoWater, int NoWaterInRow);
+namespace Inplanticular.CalculationService.Core.Contracts.V1.Requests;
+
+public record GrowthCalcRequest {
+	[Range(1, int.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
+	public int TimeFromPlanting { get; set; }
+
+	[Range(1, int.MaxValue, ErrorMessage = "Value should be greater than or equal to 1")]
+	public int RipePercentageYesterday { get; set; }
+
+	[Range(0, double.MaxValue, ErrorMessage = "Value should be greater than or equal to 0")]
+	public double GrowthPerDay { get; set; }
+
+	[Required] public double FertToday { get; set; }
+	[Required] public bool NoWater { get; set; }
+	[Required] public int NoWaterInRow { get; set; }
+}
