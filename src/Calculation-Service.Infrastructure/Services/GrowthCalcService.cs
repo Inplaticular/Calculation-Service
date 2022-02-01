@@ -16,6 +16,7 @@ public class GrowthCalcService : IGrowthCalcService {
 			var ripeTime = GrowthCalculation.CalculateRipeTime(request.TimeFromPlanting, ripeTimePercentageToday);
 			growthCalcResponse = new GrowthCalcResponse {
 				Succeeded = true,
+				GrowthPercentage = ripeTimePercentageToday,
 				RipeTime = ripeTime,
 				Messages = new[] {GrowthCalcResponse.Message.GrowthCalculationSuccessfull}
 			};

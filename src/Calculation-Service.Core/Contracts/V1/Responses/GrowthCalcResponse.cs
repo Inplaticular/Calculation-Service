@@ -3,7 +3,8 @@
 namespace Inplanticular.CalculationService.Core.Contracts.V1.Responses;
 
 public class GrowthCalcResponse : BaseResponse {
-	[Range(0, int.MaxValue)]public int RipeTime { get; set; }
+	[Range(0, double.MaxValue)] public double GrowthPercentage { get; set; }
+	[Range(0, int.MaxValue)] public int RipeTime { get; set; }
 
 	public static class Message {
 		public static readonly ValueObjects.Message
