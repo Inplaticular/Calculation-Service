@@ -1,14 +1,15 @@
 using Inplanticular.CalculationService.Core.Contracts.V1.Requests;
+using Inplanticular.CalculationService.Core.Contracts.V1.Responses;
 using Inplanticular.CalculationService.Core.Services;
+using Inplanticular.CalculationService.WebAPI.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers;
+namespace Inplanticular.CalculationService.WebAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("v1/growth")]
 public class GrowthCalculationController : ControllerBase {
 	private readonly IGrowthCalcService _growthCalcService;
-
 	private readonly ILogger<GrowthCalculationController> _logger;
 
 	public GrowthCalculationController(ILogger<GrowthCalculationController> logger,
@@ -17,9 +18,14 @@ public class GrowthCalculationController : ControllerBase {
 		_growthCalcService = growthCalcService;
 	}
 
-	[HttpGet(Name = "calculateGrowth")]
-	public IActionResult GetGrowthCalcRequest(GrowthCalcRequest growthCalcRequest) {
-		var growthCalcResponse = _growthCalcService.CalcRequestAsync(growthCalcRequest).GetAwaiter().GetResult();
-		return Ok(growthCalcResponse);
+	[HttpGet]
+	public async Task<IActionResult> GetGrowthCalcRequestAsync(GrowthCalcRequest growthCalcRequest) {
+		try {
+			return Ok(await _growthCalcService.CalcRequestAsync(growthCalcRequest));
+		}
+		catch (Exception e) {
+			_logger.LogError(e, $"{nameof(GetGrowthCalcRequestAsync)} threw an exception");
+			return this.ErrorResponse<GrowthCalcResponse>(e);
+		}
 	}
 }
