@@ -24,7 +24,7 @@ public class YieldCalcService : IYieldCalcService {
 		switch (request.DaysWithoutWater) {
 			case >= 7: {
 				var response = new YieldCalcResponse {
-					Succeeded = true,
+					Succeeded = false,
 					Errors = new[] {YieldCalcResponse.Error.PlantDiedError}
 				};
 				return response;
@@ -36,7 +36,8 @@ public class YieldCalcService : IYieldCalcService {
 					           rainBuff;
 				}
 				else {
-					yieldEst = request.ActFruitCount * request.AvgFruitWeight * (1 + request.FertilizerPercentage);
+					yieldEst = request.ActFruitCount * request.AvgFruitWeight * (1 + request.FertilizerPercentage) *
+					           1.2;
 				}
 
 				break;

@@ -2,7 +2,7 @@
 using Inplanticular.CalculationService.Infrastructure.Calculations;
 using Xunit;
 
-namespace YieldCalculationService.Infrastructure.Test;
+namespace Calculation_Service.Infrastructure.Test;
 
 public class GrowthCalculationTests {
 	[Fact]
