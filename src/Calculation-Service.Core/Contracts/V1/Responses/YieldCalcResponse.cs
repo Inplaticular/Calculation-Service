@@ -7,8 +7,8 @@ public class YieldCalcResponse : BaseResponse {
 
 	public static class Message {
 		public static readonly ValueObjects.Message
-			YieldCalculationSuccessfull = new() {
-				Code = nameof(YieldCalculationSuccessfull),
+			YieldCalculationSuccessful = new() {
+				Code = nameof(YieldCalculationSuccessful),
 				Description = "The yield was estimated successfully."
 			};
 	}

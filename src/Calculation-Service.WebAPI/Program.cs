@@ -1,3 +1,4 @@
+using Inplanticular.CalculationService.Core.Options;
 using Inplanticular.CalculationService.Core.Services;
 using Inplanticular.CalculationService.Infrastructure.Services;
 
@@ -14,6 +15,8 @@ public static class Program {
 
 	private static void ConfigureServices(WebApplicationBuilder builder) {
 		// Add services to the container.
+		builder.Services.Configure<WeatherAPIOptions>(
+			builder.Configuration.GetSection(WeatherAPIOptions.AppSettingsKey));
 		builder.Services.AddScoped<IGrowthCalcService, GrowthCalcService>();
 		builder.Services.AddScoped<IYieldCalcService, YieldCalcService>();
 		builder.Services.AddControllers();

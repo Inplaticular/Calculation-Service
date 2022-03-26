@@ -3,6 +3,9 @@
 namespace Inplanticular.CalculationService.Core.Contracts.V1.Requests;
 
 public record YieldCalcRequest {
+	public double PlantCoordinateLatitude { get; set; }
+	public double PlantCoordinateLongitude { get; set; }
+
 	[Range(1, double.MaxValue, ErrorMessage = "Value should be greater than or equal to 0")]
 	public double AvgFruitWeight { get; set; }
 
