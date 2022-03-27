@@ -31,7 +31,7 @@ public class GrowthCalcService : IGrowthCalcService {
 				Succeeded = true,
 				GrowthPercentage = ripeTimePercentageToday,
 				RipeTime = ripeTime,
-				Messages = new[] {GrowthCalcResponse.Message.GrowthCalculationSuccessfull}
+				Messages = new[] {GrowthCalcResponse.Message.GrowthCalculationSuccessful}
 			};
 		}
 		catch (PlantDeadException e) {

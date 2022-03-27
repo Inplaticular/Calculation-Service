@@ -19,11 +19,12 @@ public class YieldCalculationController : ControllerBase {
 	}
 
 	/// <summary>
-	/// Runs a calculation, to determine how much yield (number of fruits combined with average weight of one fruit) the plant will deliver 
+	///     Runs a calculation, to determine how much yield (number of fruits combined with average weight of one fruit) the
+	///     plant will deliver
 	/// </summary>
 	/// <param name="yieldCalcRequest"></param>
-	/// <returns></returns>
 	[HttpPost]
+	[ProducesResponseType(typeof(YieldCalcResponse), 200)]
 	public async Task<IActionResult> GetYieldCalcResponseAsync(YieldCalcRequest yieldCalcRequest) {
 		try {
 			var yieldCalcResponse = await _yieldCalcService.CalcRequestAsync(yieldCalcRequest);

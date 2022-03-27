@@ -8,8 +8,8 @@ public class GrowthCalcResponse : BaseResponse {
 
 	public static class Message {
 		public static readonly ValueObjects.Message
-			GrowthCalculationSuccessfull = new() {
-				Code = nameof(GrowthCalculationSuccessfull),
+			GrowthCalculationSuccessful = new() {
+				Code = nameof(GrowthCalculationSuccessful),
 				Description = "The ripeTime was calculated successfully."
 			};
 	}
@@ -18,7 +18,7 @@ public class GrowthCalcResponse : BaseResponse {
 		public static readonly ValueObjects.Message
 			PlantDiedError = new() {
 				Code = nameof(PlantDiedError),
-				Description = "The ripeTime wasnt calculated successfully. The plant died due to a lack of water."
+				Description = "The ripeTime wasn't calculated successfully. The plant died due to a lack of water."
 			};
 	}
 }
