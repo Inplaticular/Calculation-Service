@@ -1,6 +1,8 @@
+using System.Reflection;
 using Inplanticular.CalculationService.Core.Options;
 using Inplanticular.CalculationService.Core.Services;
 using Inplanticular.CalculationService.Infrastructure.Services;
+using Microsoft.OpenApi.Models;
 
 namespace Inplanticular.CalculationService.WebAPI;
 
@@ -21,7 +23,22 @@ public static class Program {
 		builder.Services.AddScoped<IYieldCalcService, YieldCalcService>();
 		builder.Services.AddControllers();
 		builder.Services.AddEndpointsApiExplorer();
-		builder.Services.AddSwaggerGen();
+		builder.Services.AddSwaggerGen(c => {
+			c.SwaggerDoc("v1", new OpenApiInfo {
+				Title = "Caclulation-Service",
+				Version = "v1",
+				Description =
+					"Caclulation-Service of Inplanticular. Used to perform calculations of the yield and growth/ripe time of a plant-",
+				Contact = new OpenApiContact {
+					Name = "Florian Korch",
+					Email = "s0568195@htw-berlin.de",
+					Url = new Uri("https://github.com/Inplaticular/Calculation-Service")
+				}
+			});
+			var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+			var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+			c.IncludeXmlComments(xmlPath);
+		});
 	}
 
 	private static void ConfigurePipeline(WebApplication app) {

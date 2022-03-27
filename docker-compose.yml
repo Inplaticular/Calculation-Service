@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  calculation_api:
+    build: .
+    command: 'dotnet Inplanticular.Calculation-Service.WebAPI.dll --urls=http://*:7003 --environment="Development"'
+    restart: unless-stopped
+    ports:
+      - 7003:7003
+    networks:
+      - inplanticular_net
+
+networks:
+  inplanticular_net:
+    name: inplanticular_net
+    external: true

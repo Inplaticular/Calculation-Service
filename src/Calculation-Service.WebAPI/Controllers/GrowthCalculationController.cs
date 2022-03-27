@@ -18,7 +18,12 @@ public class GrowthCalculationController : ControllerBase {
 		_growthCalcService = growthCalcService;
 	}
 
-	[HttpGet]
+	/// <summary>
+	///	Runs a calculation, to determine how much time the plant needs to deliver ripe fruits 
+	/// </summary>
+	/// <param name="growthCalcRequest"></param>
+	/// <returns></returns>
+	[HttpPost]
 	public async Task<IActionResult> GetGrowthCalcRequestAsync(GrowthCalcRequest growthCalcRequest) {
 		try {
 			return Ok(await _growthCalcService.CalcRequestAsync(growthCalcRequest));
