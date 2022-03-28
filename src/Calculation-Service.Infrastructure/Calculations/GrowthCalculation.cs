@@ -8,7 +8,7 @@ namespace Inplanticular.CalculationService.Infrastructure.Calculations;
 
 public static class GrowthCalculation {
 	/// <exception cref="InvalidOperationException">Why it's thrown.</exception>
-	public static double CalculateRipePercentageToday(int ripePercentageYesterday, double growthPerDay,
+	public static double CalculateRipePercentageToday(double ripePercentageYesterday, double growthPerDay,
 		double fertToday, int daysWithoutWater) {
 		var waterBuff = daysWithoutWater switch {
 			0 => 1.0,
